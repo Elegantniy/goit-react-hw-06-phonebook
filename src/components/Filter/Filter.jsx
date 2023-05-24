@@ -1,42 +1,27 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import css from './Filter.module.css';
 
-export const Filter = ({ stateFilter, renderOnChange }) => {
+import { useSelector } from 'react-redux';
+import { getFilter } from 'redux/selectors';
+import { useDispatch } from 'react-redux';
+import { setFilter } from 'redux/filterSlice';
+
+export const Filter = () => {
+  const filter = useSelector(getFilter);
+  const dispatch = useDispatch();
+  const renderOnChange = ev => {
+    dispatch(setFilter(ev.currentTarget.value));
+  };
   return (
     <>
       <input
         type="text"
         name="filter"
         className={css.input}
-        value={stateFilter}
+        value={filter}
         onChange={renderOnChange}
         placeholder="Enter name"
       />
     </>
   );
-};
-
-
-// Те що було раніше, до Хуків //
-// export class Filter extends Component {
-//   render() {
-//     return (
-//       <>
-//         <input
-//           type="text"
-//           name="filter"
-//           className={css.input}
-//           value={this.props.stateFilter}
-//           onChange={this.props.renderOnChange}
-//           placeholder='Enter name'
-//         />
-//       </>
-//     );
-//   }
-// }
-
-Filter.propTypes = {
-  stateFilter: PropTypes.string,
-  renderOnChange: PropTypes.func.isRequired,
 };
