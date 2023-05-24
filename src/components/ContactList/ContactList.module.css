@@ -1,0 +1,41 @@
+.list {
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0;
+  gap: 20px;
+}
+.listItem {
+  display: flex;
+  margin: 0;
+  font-size: 20px;
+  align-items: center;
+  padding: 0;
+  justify-content: space-between;
+}
+.listItem::before {
+  content: '\1F600';
+  margin-right: 10px;
+}
+
+.deleteBtn {
+  margin: auto;
+  margin-left: 100px;
+  padding: 10px;
+  width: 150px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(31, 31, 216);
+  font-size: 15px;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.deleteBtn:hover,
+.deleteBtn:focus {
+  outline: none;
+  border: 2px solid rgb(255, 1, 242);
+}
